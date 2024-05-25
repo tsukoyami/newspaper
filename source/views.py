@@ -89,23 +89,3 @@ def filter_sources_by_tag(request):
     sources = Source.objects.filter(tags__icontains=tag)
     source_list = list(sources.values('id', 'source_user_id', 'source_name', 'source_url', 'story_count', 'tags'))
     return JsonResponse(source_list, safe=False)
-
-
- 
-
-
-# @csrf_exempt
-# @api_view(['GET', 'POST'])
-# def source(request):
-#     if request.method == 'GET':
-#         sources = Source.objects.all()
-#         serializer = SourceSerialiser(sources, many=True)
-#         return JsonResponse(serializer.data, safe=False)
-    
-#     elif request.method == 'POST':
-#         serializer = SourceSerialiser(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return JsonResponse(serializer.data, status=201)
-#         return JsonResponse(serializer.errors, status=400)
-

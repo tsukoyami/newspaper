@@ -5,7 +5,7 @@ from .serializers import CompanySerializer
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here.
+
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def company(request):

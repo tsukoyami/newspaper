@@ -11,7 +11,7 @@ class Source(models.Model):
     tags = models.CharField(max_length=50)
 
     class Meta:
-        unique_together = ('source_user', 'source_url')  # Ensures unique URL per user
+        unique_together = ('source_user', 'source_url')
 
     def __str__(self):
         return f"{self.source_user.username} - {self.source_name}"

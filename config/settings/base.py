@@ -1,4 +1,4 @@
-# ruff: noqa: ERA001, E501
+
 """Base settings to build other settings files upon."""
 
 from pathlib import Path
@@ -6,25 +6,18 @@ from pathlib import Path
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-# newsfeed/
+
 
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
-    # OS environment variables take precedence over variables from .env
+
     env.read_env(str(BASE_DIR / ".env"))
 
-# GENERAL
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool("DJANGO_DEBUG", False)
-# Local time zone. Choices are
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# though not all of them may be available with every OS.
-# In Windows, this must be set to your system time zone.
 TIME_ZONE = "Asia/Kolkata"
-# https://docs.djangoproject.com/en/dev/ref/settings/#language-code
+
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#languages
 # from django.utils.translation import gettext_lazy as _
@@ -74,20 +67,14 @@ DJANGO_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
-    # "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
-    # "allauth",
-    # "allauth.account",
-    # "allauth.mfa",
-    # "allauth.socialaccount",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
@@ -124,18 +111,8 @@ CORS_ORIGIN_WHITELIST = ( 'localhost:4200' )
 
 CORS_ALLOW_HEADERS = [
     'Content-Type',
-    'X-CSRFToken',  # Include CSRF token header
+    'X-CSRFToken', 
 ]
-
-
-
-
-
-
-# MIGRATIONS
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-# MIGRATION_MODULES = {"sites": "newsfeed.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -144,12 +121,6 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     # "allauth.account.auth_backends.AuthenticationBackend",
 ]
-# https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
-# AUTH_USER_MODEL = "users.User"
-# # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-# LOGIN_REDIRECT_URL = "users:redirect"
-# # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-# LOGIN_URL = "account_login"
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -253,12 +224,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 FIXTURE_DIRS = (str(BASE_DIR / "fixtures"),)
 
 # SECURITY
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-httponly
-# SESSION_COOKIE_HTTPONLY = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-httponly
-# CSRF_COOKIE_HTTPONLY = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = "DENY"
 
 # EMAIL
@@ -270,18 +235,6 @@ EMAIL_BACKEND = env(
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
-
-# ADMIN
-# ------------------------------------------------------------------------------
-# # Django Admin URL.
-# ADMIN_URL = "admin/"
-# # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-# ADMINS = [("""Ankur Kumar""", "ankurkumar@gmail.com")]
-# # https://docs.djangoproject.com/en/dev/ref/settings/#managers
-# MANAGERS = ADMINS
-# # https://cookiecutter-django.readthedocs.io/en/latest/settings.html#other-environment-settings
-# # Force the `admin` sign in process to go through the `django-allauth` workflow
-# DJANGO_ADMIN_FORCE_ALLAUTH = env.bool("DJANGO_ADMIN_FORCE_ALLAUTH", default=False)
 
 # LOGGING
 # ------------------------------------------------------------------------------
@@ -306,25 +259,6 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
-
-# # django-allauth
-# # ------------------------------------------------------------------------------
-# ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
-# # https://docs.allauth.org/en/latest/account/configuration.html
-# ACCOUNT_AUTHENTICATION_METHOD = "username"
-# # https://docs.allauth.org/en/latest/account/configuration.html
-# ACCOUNT_EMAIL_REQUIRED = True
-# # https://docs.allauth.org/en/latest/account/configuration.html
-# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-# # https://docs.allauth.org/en/latest/account/configuration.html
-# ACCOUNT_ADAPTER = "newsfeed.users.adapters.AccountAdapter"
-# # https://docs.allauth.org/en/latest/account/forms.html
-# ACCOUNT_FORMS = {"signup": "newsfeed.users.forms.UserSignupForm"}
-# # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-# SOCIALACCOUNT_ADAPTER = "newsfeed.users.adapters.SocialAccountAdapter"
-# # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-# SOCIALACCOUNT_FORMS = {"signup": "newsfeed.users.forms.UserSocialSignupForm"}
-
 # django-rest-framework
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
@@ -339,11 +273,6 @@ REST_FRAMEWORK = {
     # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-# django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
-# CORS_URLS_REGEX = r"^/api/.*$"
-
-# By Default swagger ui is available only to admin user(s). You can change permission classes to change that
-# See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
     "TITLE": "newsfeed API",
     "DESCRIPTION": "Documentation of API endpoints of newsfeed",
