@@ -1,0 +1,25 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" #sourceForm="ngForm">
+        <mat-card>
+            <mat-card-title>Create Source</mat-card-title>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Source Name</mat-label>
+                    <input matInput [(ngModel)]="source.source_name" name="source_name" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Source URL</mat-label>
+                    <input matInput [(ngModel)]="source.source_url" name="source_url" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tags</mat-label>
+                    <input matInput [(ngModel)]="source.tags" name="tags">
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-button routerLink="/source">Cancel</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

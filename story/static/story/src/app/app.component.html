@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <!-- Logo -->
+    <div class="logo-container" (click)="goToStory()">
+      <img src="static/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Contify">
+    </div>
+  
+    <!-- Spacer to push buttons to the right -->
+    <span class="spacer"></span>
+  
+    <!-- Buttons -->
+    <button mat-button (click)="goToStory()">Story</button>
+    <button mat-button (click)="goToSource()">Source</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar>
+  
+  <router-outlet></router-outlet>

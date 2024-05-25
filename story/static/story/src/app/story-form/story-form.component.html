@@ -1,0 +1,37 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" #sourceForm="ngForm">
+        <mat-card>
+            <mat-card-title>Create Story</mat-card-title>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Story Title</mat-label>
+                    <input matInput [(ngModel)]="story.title" name="title" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Story URL</mat-label>
+                    <input matInput [(ngModel)]="story.url" name="url" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tags</mat-label>
+                    <input matInput [(ngModel)]="story.tags" name="tags">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <input matInput [(ngModel)]="story.published_date" name="published_date" type="datetime-local">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Discription</mat-label>
+                    <input matInput [(ngModel)]="story.body_text" name="body_text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Source</mat-label>
+                    <input matInput [(ngModel)]="story.source" name="source" type="number">
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-button routerLink="/story">Cancel</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
