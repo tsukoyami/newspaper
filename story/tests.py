@@ -4,6 +4,7 @@ from .models import Story
 from registereduser.models import RegisteredUser
 from source.models import Source
 
+# Create your tests here.
 class StoryTest(TestCase):
   """Tests for the Story model"""
 
@@ -25,13 +26,13 @@ class StoryTest(TestCase):
         created_by=user,
         source=source,
         title="Test Story Title",
-        published_date="2023-05-26",  # Replace with a valid date
+        published_date="2023-05-26", 
         body_text="This is a test story body.",
         url="https://www.example.com/story",
         tags="news,technology",
     )
     self.assertEqual(story.title, "Test Story Title")
-    self.assertEqual(story.source.source_name, "Test Source")  # Check source association
+    self.assertEqual(story.source.source_name, "Test Source") 
 
   def test_unique_url_per_user(self):
     """Tests that a user cannot have duplicate stories with the same URL"""

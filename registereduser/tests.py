@@ -2,6 +2,7 @@ from django.db import IntegrityError
 from django.test import TestCase
 from .models import RegisteredUser
 
+# Create your tests here.
 class RegisteredUserTest(TestCase):
   """Tests for the RegisteredUser model"""
 
